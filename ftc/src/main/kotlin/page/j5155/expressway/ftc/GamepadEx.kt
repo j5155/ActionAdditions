@@ -7,7 +7,7 @@ import kotlin.math.abs
 /**
  * This is a wrapper class to map gamepad buttons to actions upon various events.
  *
- * @param gamepad the Qualcomm gamepad to observe. It should be `gamepad1` or `gamepad2`, unless you're doing something funky.
+ * @param gamepad the SDK gamepad to observe. (in an opmode, `gamepad1` or `gamepad2`)
  */
 class GamepadEx(gamepad: Gamepad) {
     val a = Button { gamepad.a }
