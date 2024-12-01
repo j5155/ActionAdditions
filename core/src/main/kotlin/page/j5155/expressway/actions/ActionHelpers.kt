@@ -119,3 +119,5 @@ class NoopAction: Action {
     }
 }
 
+fun createNoopAction() = NoopAction()
+
