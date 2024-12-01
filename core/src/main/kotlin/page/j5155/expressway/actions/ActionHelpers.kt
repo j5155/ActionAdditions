@@ -109,3 +109,13 @@ class ConditionalAction(val trueAction: Action, val falseAction: Action, val det
     }
 }
 
+/**
+ * Action that does nothing and ends instantly
+ * For example, used as a default for gamepad action triggers
+ */
+class NoopAction: Action {
+    override fun run(p: TelemetryPacket): Boolean {
+        return false
+    }
+}
+
