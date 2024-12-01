@@ -54,7 +54,6 @@ class GamepadEx(gamepad: Gamepad) {
 
     /**
      * Wrapper for an individual button on a gamepad.
-     * @param name the (human-readable) name of the button
      * @param controlToWatch a lambda for the control to watch. This will be re-invoked every time update is called, so
      *          that it will automatically match the gamepad's value
      */
@@ -123,7 +122,6 @@ class GamepadEx(gamepad: Gamepad) {
 
     /**
      * Wrapper for an individual trigger on a gamepad.
-     * @param name the (human-readable) name of the trigger
      * @param controlToWatch a lambda for the control to watch. This will be re-invoked every time update is called, so
      *          that it will automatically match the gamepad's value
      */
@@ -200,8 +198,7 @@ class GamepadEx(gamepad: Gamepad) {
     }
 
     /**
-     * Wrapper for an individual joystick on a gamepad
-     * @param name the (human-readable) name of the joystick
+     * Wrapper for an individual joystick on a gamepad\
      * @param xToWatch the x value to watch
      * @param yToWatch the y value to watch
      * @param button the button to watch
