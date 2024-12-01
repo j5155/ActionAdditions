@@ -2,6 +2,7 @@ package page.j5155.expressway.ftc
 
 import com.acmerobotics.roadrunner.Action
 import com.qualcomm.robotcore.hardware.Gamepad
+import page.j5155.expressway.actions.createNoopAction
 import kotlin.math.abs
 
 /**
@@ -80,18 +81,18 @@ class GamepadEx(gamepad: Gamepad) {
         /**
          * Map an action to the onPress event. It will be run once the button is pressed
          */
-        var onPressActionMap: (() -> Action)? = null
+        var onPressActionMap: (() -> Action) = ::createNoopAction
 
         /**
          * Map an action to the onRelease event. It will be run once the button is released
          */
-        var onReleaseActionMap: (() -> Action)? = null
+        var onReleaseActionMap: (() -> Action) = ::createNoopAction
 
         /**
          * This one is a little bit special. It runs the action EVERY TIME the button is pressed (and update gets
          * called).
          */
-        var heldActionMap: (() -> Action)? = null
+        var heldActionMap: (() -> Action) = ::createNoopAction
 
         /**
          * Updates the various values, and adds mapped actions if applicable
@@ -105,15 +106,15 @@ class GamepadEx(gamepad: Gamepad) {
             down = controlToWatch.invoke()
 
             // If there are mapped actions, request to run them
-            if (justPressed && onPressActionMap != null) {
-                actionList += onPressActionMap!!.invoke()
+            if (justPressed) {
+                actionList += onPressActionMap.invoke()
             }
-            if (justReleased && onReleaseActionMap != null) {
-                actionList += onReleaseActionMap!!.invoke()
+            if (justReleased) {
+                actionList += onReleaseActionMap.invoke()
             }
 
-            if (down && heldActionMap != null) {
-                actionList += heldActionMap!!.invoke()
+            if (down) {
+                actionList += heldActionMap.invoke()
             }
 
             return actionList
@@ -159,18 +160,18 @@ class GamepadEx(gamepad: Gamepad) {
         /**
          * Map an action to the onPress event. It will be run once the button is pressed
          */
-        var onPressActionMap: (() -> Action)? = null
+        var onPressActionMap: (() -> Action) = ::createNoopAction
 
         /**
          * Map an action to the onRelease event. It will be run once the button is released
          */
-        var onReleaseActionMap: (() -> Action)? = null
+        var onReleaseActionMap: (() -> Action) = ::createNoopAction
 
         /**
          * This one is a little bit special. It runs the action EVERY TIME the button is pressed (and update gets
          * called).
          */
-        var heldActionMap: (() -> Action)? = null
+        var heldActionMap: (() -> Action) = ::createNoopAction
 
         /**
          * Updates the various values, and adds mapped actions if applicable
@@ -182,15 +183,15 @@ class GamepadEx(gamepad: Gamepad) {
             amount = controlToWatch.invoke()
 
             // If there are mapped actions, request to run them
-            if (justPressed && onPressActionMap != null) {
-                actionList += onPressActionMap!!.invoke()
+            if (justPressed) {
+                actionList += onPressActionMap.invoke()
             }
-            if (justReleased && onReleaseActionMap != null) {
-                actionList += onReleaseActionMap!!.invoke()
+            if (justReleased) {
+                actionList += onReleaseActionMap.invoke()
             }
 
-            if (down && heldActionMap != null) {
-                actionList += heldActionMap!!.invoke()
+            if (down) {
+                actionList += heldActionMap.invoke()
             }
 
             return actionList
@@ -246,17 +247,17 @@ class GamepadEx(gamepad: Gamepad) {
         /**
          * Map an action to run when the joystick first moves off center
          */
-        var onMoveActionMap: (() -> Action)? = null
+        var onMoveActionMap: (() -> Action) = ::createNoopAction
 
         /**
          * Map an action to run when the joystick first moves back to the center position
          */
-        var onCenterActionMap: (() -> Action)? = null
+        var onCenterActionMap: (() -> Action) = ::createNoopAction
 
         /**
          * Map an action to run whenever the joystick is off of the center position
          */
-        var offCenterActionMap: (() -> Action)? = null
+        var offCenterActionMap: (() -> Action) = ::createNoopAction
 
         /**
          * Updates the various values, and adds mapped actions if applicable
@@ -273,15 +274,15 @@ class GamepadEx(gamepad: Gamepad) {
             y = yToWatch.invoke()
 
             // If there are mapped actions, request to run them
-            if (justMoved && onMoveActionMap != null) {
-                actionList += onMoveActionMap!!.invoke()
+            if (justMoved) {
+                actionList += onMoveActionMap.invoke()
             }
-            if (justCentered && onCenterActionMap != null) {
-                actionList += onCenterActionMap!!.invoke()
+            if (justCentered) {
+                actionList += onCenterActionMap.invoke()
             }
 
-            if (moved && offCenterActionMap != null) {
-                actionList += offCenterActionMap!!.invoke()
+            if (moved) {
+                actionList += offCenterActionMap.invoke()
             }
 
             return actionList
