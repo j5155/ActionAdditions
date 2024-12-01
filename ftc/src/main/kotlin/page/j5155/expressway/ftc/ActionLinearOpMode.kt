@@ -4,7 +4,7 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket
 import com.acmerobotics.roadrunner.Action
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode
 
-abstract class ActionLinearOpMode(val runner: ActionRunner = ActionRunner()) : LinearOpMode() {
+abstract class ActionLinearOpMode(open val runner: ActionRunner = ActionRunner()) : LinearOpMode() {
     /**
      * Run an action asynchronously.
      * Note: you MUST run updateActions every loop so that the actions queued by runAsync continue.

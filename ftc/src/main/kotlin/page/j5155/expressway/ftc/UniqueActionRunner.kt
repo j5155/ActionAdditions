@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.util.RobotLog.a
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.contract
 
-class UniqueActionRunner: ActionRunner() {
+open class UniqueActionRunner: ActionRunner() {
     private val uniqueActionsQueue = ArrayList<UniqueAction>()
 
 
