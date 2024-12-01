@@ -27,8 +27,8 @@ class GamepadEx(gamepad: Gamepad) {
     val leftTrigger = Trigger { gamepad.left_trigger }
     val rightTrigger = Trigger { gamepad.right_trigger }
 
-    val leftStick = JoyStick ({ gamepad.left_stick_x }, { gamepad.left_stick_y }, Button { gamepad.left_stick_button })
-    val rightStick = JoyStick ({ gamepad.right_stick_x }, { gamepad.right_stick_y }, Button { gamepad.right_stick_button })
+    val leftStick = Joystick ({ gamepad.left_stick_x }, { gamepad.left_stick_y }, Button { gamepad.left_stick_button })
+    val rightStick = Joystick ({ gamepad.right_stick_x }, { gamepad.right_stick_y }, Button { gamepad.right_stick_button })
 
     val controls = listOf(a, b, x, y, dpadUp, dpadDown, dpadLeft, dpadRight, leftBumper, rightBumper,
         leftTrigger, rightTrigger, leftStick, rightStick)
@@ -38,7 +38,7 @@ class GamepadEx(gamepad: Gamepad) {
         rightTrigger.threshold = threshold
     }
 
-    fun setJoyStickThresholds(threshold: Float) {
+    fun setJoystickDeadzones(threshold: Float) {
         leftStick.deadzone = threshold
         rightStick.deadzone = threshold
     }
@@ -204,7 +204,7 @@ class GamepadEx(gamepad: Gamepad) {
      * @param yToWatch the y value to watch
      * @param button the button to watch
      */
-    inner class JoyStick(private val xToWatch: () -> Float, private val yToWatch: () -> Float, val button: Button):
+    inner class Joystick(private val xToWatch: () -> Float, private val yToWatch: () -> Float, val button: Button):
         Control {
         /**
          * How much of the joystick range to round to 0
