@@ -1,3 +1,4 @@
+import org.jetbrains.dokka.gradle.DokkaTaskPartial
 import java.io.ByteArrayOutputStream
 
 /* Gets the version name from the latest Git tag */
@@ -37,6 +38,15 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.withType<DokkaTaskPartial>().configureEach {
+    dokkaSourceSets {
+        configureEach {
+            includes.from("MODULE.md")
+        }
+    }
+}
+
 kotlin {
     jvmToolchain(18)
 }

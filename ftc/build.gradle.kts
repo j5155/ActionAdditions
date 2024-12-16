@@ -1,3 +1,4 @@
+import org.jetbrains.dokka.gradle.DokkaTaskPartial
 import java.io.ByteArrayOutputStream
 
 /* Gets the version name from the latest Git tag */
@@ -39,6 +40,13 @@ dependencies {
     implementation("com.acmerobotics.roadrunner:actions:1.0.0")
 }
 
+tasks.withType<DokkaTaskPartial>().configureEach {
+    dokkaSourceSets {
+        configureEach {
+            includes.from("MODULE.md")
+        }
+    }
+}
 
 android {
     namespace = "page.j5155.roadrunner.expressway.ftc"
